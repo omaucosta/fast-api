@@ -10,5 +10,8 @@ uvicorn fast_zero.<arquivo.py da aplicação>
 ### Rodando o lint:
 task lint
 
+### Formatação do código:
+task format
+
 ### Rodando test:
 task test
