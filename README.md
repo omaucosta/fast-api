@@ -15,3 +15,6 @@ task format
 
 ### Rodando test:
 task test
+
+### Documentação:
+http://localhost:8000/docs
