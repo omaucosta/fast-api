@@ -40,16 +40,23 @@ def test_read_user(client):
 
 def test_update_user(client):
     response = client.put(
-        '/user/1',
-        json = {
-            'id': 1,
-            'username': 'mau',
-            'email': 'mau@teste.com',
+        '/users/1',
+        json={
+            'username': 'bob',
+            'email': 'bob@example.com',
+            'password': 'mynewpassword',
         },
     )
     assert response.status_code == 200
     assert response.json() == {
+        'username': 'bob',
+        'email': 'bob@example.com',
         'id': 1,
-        'username': 'mau',
-        'email': 'mau@teste.com',
     }
+
+
+def test_delete_user(client):
+    response = client.delete('/users/1')
+
+    assert response.status_code == 200
+    assert response.json() == {'message': 'User deleted'}
