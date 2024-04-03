@@ -38,7 +38,7 @@ def test_read_user(client):
     }
 
 
-def test_update_user(client):
+def test_update_user_200(client):
     response = client.put(
         '/users/1',
         json={
@@ -55,8 +55,28 @@ def test_update_user(client):
     }
 
 
-def test_delete_user(client):
+def test_update_user_404(client):
+    response = client.put(
+        '/users/0',
+        json={
+            'username': 'bob',
+            'email': 'bob@example.com',
+            'password': 'mynewpassword',
+        },
+    )
+    assert response.status_code == 404
+    assert response.json() == {'detail': 'User not found'}
+
+
+def test_delete_user_200(client):
     response = client.delete('/users/1')
 
     assert response.status_code == 200
     assert response.json() == {'message': 'User deleted'}
+
+
+def test_delete_user_404(client):
+    response = client.delete('/users/0')
+
+    assert response.status_code == 404
+    assert response.json() == {'detail': 'User not found'}
