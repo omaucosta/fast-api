@@ -38,6 +38,24 @@ def test_read_user(client):
     }
 
 
+# def test_read_only_user_200(client):
+#     response = client.get('/users/1')
+
+#     assert response.status_code == 200
+#     assert response.json() == {
+#         'id': 1,
+#         'username': 'bob',
+#         'email': 'bob@example.com',
+#     }
+
+
+# def test_read_only_user_404(client):
+#     response = client.get('/users/-1')
+
+#     assert response.status_code == 404
+#     assert response.json() == {'detail': 'User not found'}
+
+
 def test_update_user_200(client):
     response = client.put(
         '/users/1',
